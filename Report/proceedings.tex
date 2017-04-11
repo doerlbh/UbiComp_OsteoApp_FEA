@@ -94,7 +94,7 @@
 % End of preamble. Here it comes the document.
 \begin{document}
 
-\title{Project Report: Finite Elements Analysis for OsteoApp}
+\title{Project Report: Finite Element Analysis for OsteoApp}
 
 \numberofauthors{3}
 \author{%
@@ -119,19 +119,93 @@ The project aims to conduct a finite element analysis (FEA) on a bone-like struc
 
 \section{Introduction}
 
-The finite element analysis (FEA) on a bone-like structure to simulate the vibration properties of a bone or arm. This simulation is supportive to OsteoApp, a smartphone app for personal osteoporosis screening that tests bone density and tells people if they are at risk for bone disease. OsteoApp uses a vibration technique that takes advantage of the accelerometers on a hand-held smartphone to measure bone stiffness and density, based on the vibrations that pass through the user's arm when the elbow is tapped. The FEA simulation in this study can help us better understand the relationship between the external tapping with the measured signals.
+Osteoporosis is a disease where increased bone weakness increases the risk of a broken bone. OsteoApp aims to utilize the accelerometers on a hand-held smartphone to measure bone strength, based on the vibrations that pass through the user's arm when the elbow is tapped. To facilitate the understanding of the relationship between the external tapping with the measured signals, finite element analysis (FEA) is applied, as a computerized method for predicting how a product reacts to real-world forces, vibration, heat, fluid flow, and other physical effects. The study aims to understand the information that accelerometers may be collecting based on the simulated properties of the bone-like structures. \\
+
+The study plans for three stages:
+\begin{itemize}
+\item simulate a simplified bone-like structure
+\item simulate the bone with more details and less assumptions
+\item formulate the equations of the signal properties
+\newline
+\end{itemize}
+
+For each bone models, several FEA analyses can be conducted:
+\begin{itemize}
+\item static stress analysis
+\item natural frequency analysis
+\item drop test analysis with rigid impact
+\item drop test analysis with flexible impact
+\item drop test analysis with damping effect
+\item linear dynamic modeling with modal damping 
+\end{itemize}
 
 \section{Progress} 
 
-UPDATE-\today: Currently, I have constructed a 
+UPDATE-\today: Currently, I have conducted multiple simulations for a simplified combined model of bones (a wooden complex combining two bent rods).
 
 \subsection{2017/03/30: Interview and Setup}
 
+Morelle warmly introduced me to the project and we briefly discussed the general idea of the OsteoApp project as well as its current state. 
+
 \subsection{2017/04/04: Decide on project}
+
+Josh, Morelle and I discussed about the two directions of the supporting simulation analysis for OsteoApp. We decided that there are two major directions: one is to simulate the entire finite element analysis in SolidWorks; the other is to biophysically define and formulate the possible equations of bone vibration based on the limited physical properties of bone structures. 
+After some discussion, we finally decided to start from SolidWorks simulations and later march towards mathematical formulation which is more creative and challenging.
 
 \subsection{2017/04/11: Basic construction of model}
 
-As shown in Figure~\ref{fig:figure1} from $Grey's$ $Anatomy$ \cite{WikipediaEN:Arm}, The humerus is the (upper) arm bone. It joins with the scapula above at the shoulder joint (or glenohumeral joint) and with the ulna and radius below at the elbow joint.
+As shown in Figure~\ref{fig:figure1} from $Grey's$ $Anatomy$ \cite{WikipediaEN:Arm}, the humerus is the (upper) arm bone which joins with the scapula above at the shoulder joint (or glenohumeral joint) and with the ulna and radius below at the elbow joint. The entire structure of bones is rather complicated considering the twisted and combined configuration.
+
+To simplify the arm structure, I first use femur bone model from GrabCAD \cite{SB:bone} for my initial simulation, with its shape shown in Figure XXX and its mass properties shown in Figure XXX. However, later I found that the calculation by SolidWorks took several hours for even the simplest simulation. I attributed this issue as the complexity of the real bone structure as well as its fine mesh mapping. 
+
+Therefore, I created a 3D model of a simplified double bone of ulna and radius combined, shown in Figure XXX. To create the bone, I assume an average adult has ulna and radius bone with an approximately 20mm in diameter each and 300mm in length with a flex of 15 degrees. I combined them together with a shared diameters of 2mm from the flex. 
+
+For the material selection applied for simulations, the bones are not fully solid but made up of a network of matter with pores. In addition, most of the largest bones are hollow and each bone also contains blood vessels, nerve cells and living bone cells known as osteocytes. These are held together by a framework of hard, non-living material containing calcium and phosphorous. A thin membrane called the periosteum covers the surface of your bones. Based on different density, bone can either be spongy or compact. Therefore, I suppose the nearest to bone would be a composite of some sort or hard-wood, because trunks also consist of cells with cell walls like bone structures. From the material categories, I chose balsa wood as the structure with properties shown in Figure XXX.
+
+\subsubsection{Static stress analysis}
+
+With a fixed point on the top of the bone as a hand holding smartphone, the simulation exert a static 20N force in a direction normal to the bottom of the combined double bone model, resembling the movement of tapping the elbow.
+
+The static stress analysis doesn't inform much about frequency signals. However, as shown in Figure XXX, it offers helps information on the biggest strain of the model, which can also be the noisiest location to collect signals. This can possibly imply the evaluation of signal qualities based on certain posture of holding the phone.
+
+\subsubsection{Natural frequency analysis}
+
+Natural Frequencies are the fundamental frequencies whose multiples are called "harmonics". The model structures tend to vibrate with a particular mode shape at each frequency. Dynamic loads coinciding with a natural frequency can cause resonance. Therefore, we can measure its natural frequency as a potential signal indicator via resonance. Damping exists in real structures to limit the response.
+
+It is also noted that, natural frequencies and mode shapes depend on geometry, material properties and mass, support conditions (fixtures) and in-plane loads. Many of these factors have been simplified by assumptions which can be different from a real bone structures. Thus, further study can be conducted to explore these factors. In addition, real structures have infinite numbers of natural frequencies and modal shapes, but in finite element models we use, they only have a finite number.
+
+\subsubsection{Drop test analysis with rigid impact}
+
+In a drop test analysis, the time varying stresses and deformations due to an initial impact of the product with a rigid or flexible planar surface (the floor) are calculated. I found this simulation interesting because the idea of tapping elbow resembles dropping the elbow on a desk or hand. 
+
+I found another variable very useful that is generated in the analysis, "Translational Acceleration" in $mm/s^2$, because I think this signal could potentially resemble the signal sensed by the accelerometers in smartphones.
+
+In Drop Test 1, the bone vertically drop at 5m/s with gravity considered.
+In this case, I consider the system without damping, so I set contact damping = 0. I also consider it to drop to a stiff surface, so I set target stiffness = rigid.
+
+As shown in Figure XXX, 
+
+\subsubsection{Drop test analysis with flexible impact}
+
+In Drop Test 2, the bone vertically drop at 5m/s with gravity considered.
+In this case, I consider the system without damping, so I set contact damping = 0. I also consider it to drop to a flexible surface, so I set target stiffness = flexible.
+
+As shown in Figure XXX, 
+
+
+
+
+\subsubsection{Drop test analysis with damping effect}
+
+In Drop Test 3, the bone vertically drop at 5m/s with gravity considered.
+In this case, I consider the system without damping, so I set contact damping = 0.5. I also consider it to drop to a stiff surface, so I set target stiffness = rigid.
+
+As shown in Figure XXX, 
+
+\subsubsection{Linear dynamic modeling with modal damping} 
+
+Linear dynamic modeling would be a very interesting simulation because it can take into account the impact of a ball towards the bone, which can support an existing measurement equipment in the lab. Unfortunately, when I was running the simulations, the SolidWorks crashed several times and never made to the end. I will re-attempt this simulation.
+
 
 \begin{figure}
 \centering
@@ -165,50 +239,14 @@ As shown in Figure~\ref{fig:figure1} from $Grey's$ $Anatomy$ \cite{WikipediaEN:A
 \begin{figure*}
   \centering
   \includegraphics[width=1.75\columnwidth]{figures/map}
-  \caption{In this image, the map maximizes use of space. You can make
-    figures as wide as you need, up to a maximum of the full width of
-    both columns. Note that \LaTeX\ tends to render large figures on a
-    dedicated page. Image: \ccbynd~ayman on
-    Flickr.}~\label{fig:figure2}
+  \caption{testing data}
+    ~\label{fig:figure2}
 \end{figure*}
-
-
-
-
-\begin{itemize}
-\item Write in a straightforward style.
-\item Try to avoid long or complex sentence structures.
-\item Briefly define or explain all technical terms that may be
-  unfamiliar to readers.
-\item Explain all acronyms the first time they are used in your
-  text---e.g., ``Digital Signal Processing (DSP)''.
-\item Explain local references (e.g., not everyone knows all city
-  names in a particular country).
-\item Explain ``insider'' comments. Ensure that your whole audience
-  understands any reference whose meaning you do not describe (e.g.,
-  do not assume that everyone has used a Macintosh or a particular
-  application).
-\end{itemize}
-
-following five steps:
-\begin{enumerate}
-\item Add alternative text to all figures
-\item Mark table headings
-\item Add tags to the PDF
-\item Verify the default language
-\item Set the tab order to ``Use Document Structure''
-\end{enumerate}
-
 
 
 \section{Acknowledgments}
 
-Sample text: We thank all the volunteers, and all publications support
-and staff, who wrote and provided helpful comments on previous
-versions of this document. Authors 1, 2, and 3 gratefully acknowledge
-the grant from NSF (\#1234--2012--ABC). \textit{This whole paragraph is
-  just an example.}
-
+Thank Prof. Shwetak Patel for the opportunity to join this exciting lab and work on this meaningful project. Thank Morelle and Josh for the patient guidance and faith in me through the project. Thank UbiComp Lab members for helpful advice and support. Thank University of Washington for the wonderful platforms and resources in electrical engineering and computer science.
 
 \balance{}
 
