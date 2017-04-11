@@ -31,6 +31,23 @@
 \usepackage{ccicons}  % Cite your images correctly!
 % \usepackage[utf8]{inputenc} % for a UTF8 editor only
 
+\usepackage{chemformula}
+\usepackage{booktabs,amsmath}
+\usepackage[utf8]{inputenc}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{placeins}
+\usepackage{float}
+\usepackage{amssymb}
+\usepackage{pdfpages}
+\usepackage{chemformula}
+\usepackage{amsmath}
+\usepackage{caption}
+\usepackage{subcaption}
+%\usepackage{subfig}
+
 % If you want to use todo notes, marginpars etc. during creation of your draft document, you
 % have to enable the "chi_draft" option for the document class. To do this, change the very first
 % line to: "\documentclass[chi_draft]{sigchi}". You can then place todo notes by using the "\todo{...}"
@@ -154,19 +171,57 @@ After some discussion, we finally decided to start from SolidWorks simulations a
 
 \subsection{2017/04/11: Basic construction of model}
 
-As shown in Figure~\ref{fig:figure1} from $Grey's$ $Anatomy$ \cite{WikipediaEN:Arm}, the humerus is the (upper) arm bone which joins with the scapula above at the shoulder joint (or glenohumeral joint) and with the ulna and radius below at the elbow joint. The entire structure of bones is rather complicated considering the twisted and combined configuration.
+As shown in Figure~\ref{fig:arm_diagram} from $Grey's$ $Anatomy$ \cite{WikipediaEN:Arm}, the humerus is the (upper) arm bone which joins with the scapula above at the shoulder joint (or glenohumeral joint) and with the ulna and radius below at the elbow joint. The entire structure of bones is rather complicated considering the twisted and combined configuration.
 
-To simplify the arm structure, I first use femur bone model from GrabCAD \cite{SB:bone} for my initial simulation, with its shape shown in Figure XXX and its mass properties shown in Figure XXX. However, later I found that the calculation by SolidWorks took several hours for even the simplest simulation. I attributed this issue as the complexity of the real bone structure as well as its fine mesh mapping. 
 
-Therefore, I created a 3D model of a simplified double bone of ulna and radius combined, shown in Figure XXX. To create the bone, I assume an average adult has ulna and radius bone with an approximately 20mm in diameter each and 300mm in length with a flex of 15 degrees. I combined them together with a shared diameters of 2mm from the flex. 
+\begin{figure}
+\centering
+  \includegraphics[width=0.9\columnwidth]{figures/human_arm_bones_diagram}
+  \caption{Bones of the upper limbs, together with shoulder girdles together comprising the human arm}~\label{fig:arm_diagram}
+\end{figure}
 
-For the material selection applied for simulations, the bones are not fully solid but made up of a network of matter with pores. In addition, most of the largest bones are hollow and each bone also contains blood vessels, nerve cells and living bone cells known as osteocytes. These are held together by a framework of hard, non-living material containing calcium and phosphorous. A thin membrane called the periosteum covers the surface of your bones. Based on different density, bone can either be spongy or compact. Therefore, I suppose the nearest to bone would be a composite of some sort or hard-wood, because trunks also consist of cells with cell walls like bone structures. From the material categories, I chose balsa wood as the structure with properties shown in Figure XXX.
+
+To simplify the arm structure, I first use femur bone model from GrabCAD \cite{SB:bone} for my initial simulation, with its shape shown and its mass properties shown in Figure \ref{fig:femur_property}. However, later I found that the calculation by SolidWorks took several hours for even the simplest simulation. I attributed this issue as the complexity of the real bone structure as well as its fine mesh mapping. 
+
+
+\begin{figure}
+\centering
+  \includegraphics[width=0.9\columnwidth]{figures/femur_property}
+  \caption{the femur model and its mass properties }~\label{fig:femur_property}
+\end{figure}
+
+
+Therefore, I created a 3D model of a simplified double bone of ulna and radius combined, shown in Figure \ref{fig:double_bone}. To create the bone, I assume an average adult has ulna and radius bone with an approximately 20mm in diameter each and 300mm in length with a flex of 15 degrees. I combined them together with a shared diameters of 2mm from the flex. 
+
+
+\begin{figure}
+\centering
+  \includegraphics[width=0.9\columnwidth]{figures/double_bone}
+  \caption{the double bone model}~\label{fig:double_bone}
+\end{figure}
+
+
+For the material selection applied for simulations, the bones are not fully solid but made up of a network of matter with pores. In addition, most of the largest bones are hollow and each bone also contains blood vessels, nerve cells and living bone cells known as osteocytes. These are held together by a framework of hard, non-living material containing calcium and phosphorous. A thin membrane called the periosteum covers the surface of your bones. Based on different density, bone can either be spongy or compact. Therefore, I suppose the nearest to bone would be a composite of some sort or hard-wood, because trunks also consist of cells with cell walls like bone structures. From the material categories, I chose balsa wood as the structure with properties shown in Figure \ref{fig:db_balsa}.
+
+\begin{figure}
+\centering
+  \includegraphics[width=0.9\columnwidth]{figures/db_balsa}
+  \caption{the material properties of balsa wood applied to the designed double bone model}~\label{fig:db_balsa}
+\end{figure}
 
 \subsubsection{Static stress analysis}
 
 With a fixed point on the top of the bone as a hand holding smartphone, the simulation exert a static 20N force in a direction normal to the bottom of the combined double bone model, resembling the movement of tapping the elbow.
 
-The static stress analysis doesn't inform much about frequency signals. However, as shown in Figure XXX, it offers helps information on the biggest strain of the model, which can also be the noisiest location to collect signals. This can possibly imply the evaluation of signal qualities based on certain posture of holding the phone.
+The static stress analysis doesn't inform much about frequency signals. However, as shown in Figure \ref{db_stat_ana}, it offers helps information on the biggest strain of the model, which can also be the noisiest location to collect signals. This can possibly imply the evaluation of signal qualities based on certain posture of holding the phone.
+
+
+\begin{figure*}
+\centering
+  \includegraphics[width=1.95\columnwidth]{figures/db_stat_ana}
+  \caption{the static stress analysis of the double bone model in (a) stress, (b) displacement and (c) strain.}~\label{fig:db_stat_ana}
+\end{figure*}
+
 
 \subsubsection{Natural frequency analysis}
 
@@ -174,74 +229,135 @@ Natural Frequencies are the fundamental frequencies whose multiples are called "
 
 It is also noted that, natural frequencies and mode shapes depend on geometry, material properties and mass, support conditions (fixtures) and in-plane loads. Many of these factors have been simplified by assumptions which can be different from a real bone structures. Thus, further study can be conducted to explore these factors. In addition, real structures have infinite numbers of natural frequencies and modal shapes, but in finite element models we use, they only have a finite number.
 
+The simulation indicates a wide variety of possible harmonic vibrations, as shown from Figure \ref{fig:db_freq1_amp1}, \ref{fig:db_freq1_amp2}, \ref{fig:db_freq1_amp3}, \ref{fig:db_freq1_amp4} and \ref{fig:db_freq1_amp5}. The relationship of mode number with natural frequencies were not purely linear, demonstrated by Table \ref{tab:db_freq} and Figure \ref{fig:db_freq1_graph1}.
+
+\begin{figure}
+\centering
+  \includegraphics[width=0.9\columnwidth]{figures/db_freq1_amp1}
+  \caption{natural frequency analysis 1 for double bone}~\label{fig:db_freq1_amp1}
+\end{figure}
+
+\begin{figure}
+\centering
+  \includegraphics[width=0.9\columnwidth]{figures/db_freq1_amp2}
+  \caption{natural frequency analysis 2 for double bone}~\label{fig:db_freq1_amp2}
+\end{figure}
+
+\begin{figure}
+\centering
+  \includegraphics[width=0.9\columnwidth]{figures/db_freq1_amp3}
+  \caption{natural frequency analysis 3 for double bone}~\label{fig:db_freq1_amp3}
+\end{figure}
+
+\begin{figure}
+\centering
+  \includegraphics[width=0.9\columnwidth]{figures/db_freq1_amp4}
+  \caption{natural frequency analysis 4 for double bone}~\label{fig:db_freq1_amp4}
+\end{figure}
+
+\begin{figure}
+\centering
+  \includegraphics[width=0.9\columnwidth]{figures/db_freq1_amp5}
+  \caption{natural frequency analysis 5 for double bone}~\label{fig:db_freq1_amp5}
+\end{figure}
+
+\begin{table}
+  \centering
+  \begin{tabular}{l r r r}
+    % \toprule
+    & & \multicolumn{2}{c}{\small{\textbf{Frequency}}} \\
+    \cmidrule(r){3-4}
+    {\small\textit{Mode No.}}
+    & {\small \textit{Period (s)}}
+      & {\small \textit{(Rad/s)}}
+    & {\small \textit{(Hertz)}} \\
+    \midrule
+    1 & 0.0076324 & 823.23 & 131.02 \\
+    2 & 0.0051459 & 1221 & 194.33 \\
+    3 & 0.0014234 & 4414.1 & 702.53 \\
+    4 & 0.0012319 & 5100.4 & 811.76 \\
+    4 & 0.0011668 & 5384.9 & 857.04 \\
+    % \bottomrule
+  \end{tabular}
+  \caption{natural frequencies in different modes for double bone model}~\label{tab:db_freq}
+\end{table}
+
+\begin{figure}
+\centering
+  \includegraphics[width=0.9\columnwidth]{figures/db_freq1_graph1}
+  \caption{natural frequency vs. mode number for double bone}~\label{fig:db_freq1_graph1}
+\end{figure}
+
+
 \subsubsection{Drop test analysis with rigid impact}
 
 In a drop test analysis, the time varying stresses and deformations due to an initial impact of the product with a rigid or flexible planar surface (the floor) are calculated. I found this simulation interesting because the idea of tapping elbow resembles dropping the elbow on a desk or hand. 
 
 I found another variable very useful that is generated in the analysis, "Translational Acceleration" in $mm/s^2$, because I think this signal could potentially resemble the signal sensed by the accelerometers in smartphones.
 
-In Drop Test 1, the bone vertically drop at 5m/s with gravity considered.
-In this case, I consider the system without damping, so I set contact damping = 0. I also consider it to drop to a stiff surface, so I set target stiffness = rigid.
+In Drop Test 1, the bone vertically drop at 5m/s with gravity considered. In this case, I consider the system without damping, so I set contact damping = 0. I also consider it to drop to a stiff surface, so I set target stiffness = rigid, with result shown in Figure \ref{fig:db_dt1_ana}. 
 
-As shown in Figure XXX, 
+Interestingly, if we consider the time graph of the translational acceleration (Figure \ref{fig:db_dt1_res}) as described previously, we can see that the signals have their unique patterns. Node 1 and 2 were both collected at the very end, and they responded different from Node 7 in a more middle position.
+
+\begin{figure*}
+  \centering
+  \includegraphics[width=1.95\columnwidth]{figures/db_dt1_ana}
+  \caption{analysis for Drop Test 1 for double bone in (a) stress, (b) displacement and (c) strain.}
+    ~\label{fig:db_dt1_ana}
+\end{figure*}
+
+\begin{figure*}
+  \centering
+  \includegraphics[width=1.95\columnwidth]{figures/db_dt1_res}
+  \caption{response graphs for Drop Test 1 for double bone in three different location (nodes).}
+    ~\label{fig:db_dt1_res}
+\end{figure*}
 
 \subsubsection{Drop test analysis with flexible impact}
 
-In Drop Test 2, the bone vertically drop at 5m/s with gravity considered.
-In this case, I consider the system without damping, so I set contact damping = 0. I also consider it to drop to a flexible surface, so I set target stiffness = flexible.
+In Drop Test 2, the bone vertically drop at 5m/s with gravity considered. In this case, I consider the system without damping, so I set contact damping = 0. I also consider it to drop to a flexible surface, so I set target stiffness = flexible, with result shown in Figure \ref{fig:db_dt2_ana}. 
 
-As shown in Figure XXX, 
+I found this case interesting because this resembles the tapping of elbow by hand palm which is a flexible surface with certain thickness. From the animation I also observe such absorption of vibrations and delay of transduction.
 
+If we consider the time graph of the translational acceleration (Figure \ref{fig:db_dt2_res}), we can see that the signals are in fact very different from the Drop Test 1 in the same locations. This implies that the material of the tapping objects is a very important factor in the signal identification.
 
+\begin{figure*}
+  \centering
+  \includegraphics[width=1.95\columnwidth]{figures/db_dt2_ana}
+  \caption{analysis for Drop Test 2 for double bone in (a) stress, (b) displacement and (c) strain.}
+    ~\label{fig:db_dt2_ana}
+\end{figure*}
+
+\begin{figure*}
+  \centering
+  \includegraphics[width=1.95\columnwidth]{figures/db_dt2_res}
+  \caption{response graphs for Drop Test 2 for double bone in three different location (nodes).}
+    ~\label{fig:db_dt2_res}
+\end{figure*}
 
 
 \subsubsection{Drop test analysis with damping effect}
 
-In Drop Test 3, the bone vertically drop at 5m/s with gravity considered.
-In this case, I consider the system without damping, so I set contact damping = 0.5. I also consider it to drop to a stiff surface, so I set target stiffness = rigid.
+In Drop Test 3, the bone vertically drop at 5m/s with gravity considered. In this case, I consider the system without damping, so I set contact damping = 0.5. I also consider it to drop to a stiff surface, so I set target stiffness = rigid, with result shown in Figure \ref{fig:db_dt3_ana}, which is very similar to Drop Test 1. Such similarity also arises in the time graph of the translational acceleration (Figure \ref{fig:db_dt3_res}). Arguably speaking, this doesn't support the importance of damping effect in signal feature extraction later in OsteoApp development. 
 
-As shown in Figure XXX, 
+\begin{figure*}
+  \centering
+  \includegraphics[width=1.95\columnwidth]{figures/db_dt3_ana}
+  \caption{analysis for Drop Test 3 for double bone in (a) stress, (b) displacement and (c) strain.}
+    ~\label{fig:db_dt3_ana}
+\end{figure*}
+
+\begin{figure*}
+  \centering
+  \includegraphics[width=1.95\columnwidth]{figures/db_dt3_res}
+  \caption{response graphs for Drop Test 3 for double bone in three different location (nodes).}
+    ~\label{fig:db_dt3_res}
+\end{figure*}
+
 
 \subsubsection{Linear dynamic modeling with modal damping} 
 
 Linear dynamic modeling would be a very interesting simulation because it can take into account the impact of a ball towards the bone, which can support an existing measurement equipment in the lab. Unfortunately, when I was running the simulations, the SolidWorks crashed several times and never made to the end. I will re-attempt this simulation.
-
-
-\begin{figure}
-\centering
-  \includegraphics[width=0.9\columnwidth]{figures/human_arm_bones_diagram}
-  \caption{Bones of the upper limbs, together with shoulder girdles together comprising the human arm}~\label{fig:figure1}
-\end{figure}
-
-
-\begin{table}
-  \centering
-  \begin{tabular}{l r r r}
-    % \toprule
-    & & \multicolumn{2}{c}{\small{\textbf{Test Conditions}}} \\
-    \cmidrule(r){3-4}
-    {\small\textit{Name}}
-    & {\small \textit{First}}
-      & {\small \textit{Second}}
-    & {\small \textit{Final}} \\
-    \midrule
-    Marsden & 223.0 & 44 & 432,321 \\
-    Nass & 22.2 & 16 & 234,333 \\
-    Borriello & 22.9 & 11 & 93,123 \\
-    Karat & 34.9 & 2200 & 103,322 \\
-    % \bottomrule
-  \end{tabular}
-  \caption{Table captions should be placed below the table. We
-    recommend table lines be 1 point, 25\% black. Minimize use of
-    table grid lines.}~\label{tab:table1}
-\end{table}
-
-\begin{figure*}
-  \centering
-  \includegraphics[width=1.75\columnwidth]{figures/map}
-  \caption{testing data}
-    ~\label{fig:figure2}
-\end{figure*}
 
 
 \section{Acknowledgments}
