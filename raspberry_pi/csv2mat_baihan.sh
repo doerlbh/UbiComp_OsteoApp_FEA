@@ -15,10 +15,8 @@ do
     sed -i -e 's/$/];/' $mname.list
 done
 
-cat *list > ${folder//*\//}_analysis_baihan.m
+cat *list > ${folder//*\//}_data_baihan.m
 echo "save('${folder//*\//}');" >> ${folder//*\//}_data_baihan.m
 rm *.list*
 
 /Applications/Work/MATLAB_R2015b.app/bin/matlab -nodesktop -r "${folder//*\//}_data_baihan"
-
-#echo "save('${folder//*\//}');" > ${folder//*\//}_analysis_baihan.m

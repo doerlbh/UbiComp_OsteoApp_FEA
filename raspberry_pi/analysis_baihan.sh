@@ -24,7 +24,7 @@ do
     echo "n_$acc0 = max($acc0.');" >> $mscript
     echo "n_$acc1 = max($acc1.');\n" >> $mscript
     echo "n = int64(length($acc0) * 6 / 7);" >> $mscript
-    echo "maxval=0;\nmaxindex=0;" >> $mscript
+    echo "maxval=0;\nmaxindex=1;" >> $mscript
     echo "\nfor m = 1:length($acc0)-n\ns=sum(n_$acc0(m:m+n-1));\nif(s>maxval)\nmaxval = s;\nmaxindex = m;\nend\nend\n" >> $mscript
     echo "p01 = n_$acc0(maxindex:maxindex+n-1)./n_$acc1(maxindex:maxindex+n-1);" >> $mscript
     echo "p10 = n_$acc1(maxindex:maxindex+n-1)./n_$acc0(maxindex:maxindex+n-1);\n" >> $mscript
@@ -55,5 +55,7 @@ do
 
 done
 
-/Applications/Work/MATLAB_R2015b.app/bin/matlab -nodesktop -r "$mscript"
+#fscript=`pwd`/$mscript
+
+/Applications/Work/MATLAB_R2015b.app/bin/matlab -nodesktop -r "${mscript//.m/}"
 
