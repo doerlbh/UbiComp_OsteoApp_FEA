@@ -19,6 +19,10 @@ total 327056
 -rw-r--r-- 1 pi pi 5659039 Apr 30 14:34 acc0_04_30_21_33_01.pkl
 -rw-r--r-- 1 pi pi 2933850 Apr 30 14:34 acc0_04_30_21_33_01.csv
 -rw-r--r-- 1 pi pi 2556168 Apr 30 14:34 acc1_04_30_21_33_01.csv
+-rw-r--r-- 1 pi pi 4977449 Apr 30 14:40 acc1_04_30_21_39_36.pkl
+-rw-r--r-- 1 pi pi 5393313 Apr 30 14:40 acc0_04_30_21_39_36.pkl
+-rw-r--r-- 1 pi pi 2716856 Apr 30 14:40 acc0_04_30_21_39_36.csv
+-rw-r--r-- 1 pi pi 2300992 Apr 30 14:41 acc1_04_30_21_39_36.csv
 -rw-r--r-- 1 pi pi 5267874 Apr 30 14:45 acc1_04_30_21_44_43.pkl
 -rw-r--r-- 1 pi pi 5548411 Apr 30 14:45 acc0_04_30_21_44_43.pkl
 -rw-r--r-- 1 pi pi 2858898 Apr 30 14:46 acc0_04_30_21_44_43.csv
