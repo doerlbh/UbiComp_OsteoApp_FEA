@@ -7,18 +7,19 @@ import numpy as np
 import sys
 
 dt = 0.0003
-alltime=66.0
-#N=220000
+allTime=66.0
+sampleSize=220000
 
 #for arg in sys.argv:
-#    f=open(arg)
-#    for i in range(N):
-#    	line=f.next().strip()
-#    	print line
-#	f.close()
+#	filename=arg
 
+#f=open(filename)
+#for i in range(sampleSize):
+#    line=f.next().strip()
+#    print line
+#f.close()
 
-t = np.arange(0.0, alltime, dt)
+t = np.arange(0.0, allTime, dt)
 s1 = np.sin(2*np.pi*100*t)
 s2 = 2*np.sin(2*np.pi*400*t)
 
@@ -38,8 +39,20 @@ Fs = int(1.0/dt)  # the sampling frequency
 # the power is computed, and im is the matplotlib.image.AxesImage
 # instance
 
-ax1 = plt.subplot(211)
+ax1 = plt.subplot(231)
 plt.plot(t, x)
-plt.subplot(212, sharex=ax1)
+plt.subplot(234, sharex=ax1)
 Pxx, freqs, bins, im = plt.specgram(x, NFFT=NFFT, Fs=Fs, noverlap=900)
+
+ax1 = plt.subplot(232)
+plt.plot(t, x)
+plt.subplot(235, sharex=ax1)
+Pxx, freqs, bins, im = plt.specgram(x, NFFT=NFFT, Fs=Fs, noverlap=900)
+
+ax1 = plt.subplot(233)
+plt.plot(t, x)
+plt.subplot(236, sharex=ax1)
+Pxx, freqs, bins, im = plt.specgram(x, NFFT=NFFT, Fs=Fs, noverlap=900)
+
 plt.show()
+#plt.savefig(filename.replace("csv", "png"))
