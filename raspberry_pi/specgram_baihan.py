@@ -7,6 +7,7 @@ import numpy as np
 import sys
 
 dt = 0.0003
+alltime=66.0
 #N=220000
 
 #for arg in sys.argv:
@@ -17,7 +18,7 @@ dt = 0.0003
 #	f.close()
 
 
-t = np.arange(0.0, 66s.0, dt)
+t = np.arange(0.0, alltime, dt)
 s1 = np.sin(2*np.pi*100*t)
 s2 = 2*np.sin(2*np.pi*400*t)
 
