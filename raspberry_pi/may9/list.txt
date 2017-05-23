@@ -1,0 +1,7 @@
+total 3624
+-rw-r--r-- 1 pi pi 733184 May  9 15:02 acc1_05_09_22_02_24.pkl
+-rw-r--r-- 1 pi pi 757761 May  9 15:04 acc0_05_09_22_02_24.pkl
+-rw-r--r-- 1 pi pi 724224 May  9 15:05 acc1_05_09_22_05_16.pkl
+-rw-r--r-- 1 pi pi 767811 May  9 15:05 acc0_05_09_22_05_16.pkl
+-rw-r--r-- 1 pi pi 379754 May  9 15:05 acc0_05_09_22_05_16.csv
+-rw-r--r-- 1 pi pi 336168 May  9 15:06 acc1_05_09_22_05_16.csv
