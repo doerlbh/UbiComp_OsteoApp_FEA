@@ -1,0 +1,18 @@
+total 59604
+-rw-r--r-- 1 pi pi 4925337 May 14 13:29 acc0_05_14_20_27_54.pkl
+-rw-r--r-- 1 pi pi 4921101 May 14 13:29 acc1_05_14_20_27_54.pkl
+-rw-r--r-- 1 pi pi 2362604 May 14 13:29 acc0_05_14_20_27_54.csv
+-rw-r--r-- 1 pi pi 2358368 May 14 13:29 acc1_05_14_20_27_54.csv
+-rw-r--r-- 1 pi pi 5236789 May 14 13:30 acc0_05_14_20_29_38.pkl
+-rw-r--r-- 1 pi pi 5233261 May 14 13:30 acc1_05_14_20_29_38.pkl
+-rw-r--r-- 1 pi pi 2509872 May 14 13:30 acc0_05_14_20_29_38.csv
+-rw-r--r-- 1 pi pi 2506344 May 14 13:31 acc1_05_14_20_29_38.csv
+-rw-r--r-- 1 pi pi 5281904 May 14 13:32 acc1_05_14_20_31_12.pkl
+-rw-r--r-- 1 pi pi 5280199 May 14 13:32 acc0_05_14_20_31_12.pkl
+-rw-r--r-- 1 pi pi 2538834 May 14 13:32 acc0_05_14_20_31_12.csv
+-rw-r--r-- 1 pi pi 2540539 May 14 13:32 acc1_05_14_20_31_12.csv
+-rw-r--r-- 1 pi pi 5172414 May 14 13:33 acc1_05_14_20_32_44.pkl
+-rw-r--r-- 1 pi pi 5185408 May 14 13:33 acc0_05_14_20_32_44.pkl
+-rw-r--r-- 1 pi pi 2485899 May 14 13:34 acc0_05_14_20_32_44.csv
+-rw-r--r-- 1 pi pi 2472905 May 14 13:34 acc1_05_14_20_32_44.csv
+-rw-r--r-- 1 pi pi       0 May 14 13:49 list
