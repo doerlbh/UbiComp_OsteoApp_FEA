@@ -4,9 +4,20 @@
 
 import matplotlib.pyplot as plt
 import numpy as np
+import sys
 
-dt = 0.0005
-t = np.arange(0.0, 70.0, dt)
+dt = 0.0003
+#N=220000
+
+#for arg in sys.argv:
+#    f=open(arg)
+#    for i in range(N):
+#    	line=f.next().strip()
+#    	print line
+#	f.close()
+
+
+t = np.arange(0.0, 66s.0, dt)
 s1 = np.sin(2*np.pi*100*t)
 s2 = 2*np.sin(2*np.pi*400*t)
 
