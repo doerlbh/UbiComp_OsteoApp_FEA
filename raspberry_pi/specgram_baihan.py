@@ -10,14 +10,13 @@ dt = 0.0003
 allTime=66.0
 sampleSize=220000
 
-#for arg in sys.argv:
-#	filename=arg
+for arg in sys.argv:
+	filename=arg
 
-#f=open(filename)
-#for i in range(sampleSize):
-#    line=f.next().strip()
-#    print line
-#f.close()
+with open(filename) as myfile:
+    data = [next(myfile) for x in xrange(sampleSize)]
+    for line in data:
+        print(line.split()[0])
 
 t = np.arange(0.0, allTime, dt)
 s1 = np.sin(2*np.pi*100*t)
@@ -55,4 +54,4 @@ plt.subplot(236, sharex=ax1)
 Pxx, freqs, bins, im = plt.specgram(x, NFFT=NFFT, Fs=Fs, noverlap=900)
 
 plt.show()
-#plt.savefig(filename.replace("csv", "png"))
+plt.savefig(filename.replace("csv", "png"))
