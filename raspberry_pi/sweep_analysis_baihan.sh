@@ -1,13 +1,13 @@
 #!/bin/bash
 
 # -*- coding: utf-8 -*-
-# Code: analysis
+# Code: sweep analysis
 # Author: Baihan Lin
 # Date: Apr 2017
 # Lab: UbiComp Lab
 
 folder=`pwd`
-mscript=${folder//*\//}_analysis_baihan.m
+mscript=${folder//*\//}_sweep_analysis_baihan.m
 echo "% sweep analysis.m for experiment ${folder//*\//} \n% Baihan Lin, Apr 2017\n" > $mscript
 
 echo "clear all; close all;" >> $mscript

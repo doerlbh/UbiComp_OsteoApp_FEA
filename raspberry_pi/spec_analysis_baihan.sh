@@ -26,7 +26,7 @@ do
 	echo "s_$acc0=zeros(size,1);\n" >> $mscript
 	echo "s_$acc1=zeros(size,1);\n\n" >> $mscript
 	
-	echo "for n = 1:size\n" >> $mscript
+	echo "parfor n = 1:size\n" >> $mscript
     	echo "s_$acc0(n) = $acc0(n,:)*plane0.'/norm(plane0,2);\n" >> $mscript
     	echo "s_$acc1(n) = $acc1(n,:)*plane1.'/norm(plane1,2);\n" >> $mscript
 	echo "end\n\n" >> $mscript
@@ -50,6 +50,13 @@ do
 	echo "filename = strcat(path, 'spec_$acc1.png');\n" >> $mscript
 	echo "saveas(gcf, filename,'png');\n" >> $mscript
 	echo "close(figure(2));\n" >> $mscript
+
+	echo "figure(3)\n" >> $mscript
+	echo "spectrogram(s_$acc0./s_$acc1,wind,nlap,nfft,Fs,'yaxis')\n" >> $mscript
+	echo "title('Ratio Spectogram acc0${acc1//_/\\_}');\n" >> $mscript
+	echo "filename = strcat(path, 'spec_ratio_acc0$acc1.png');\n" >> $mscript
+	echo "saveas(gcf, filename,'png');\n" >> $mscript
+	echo "close(figure(3));\n" >> $mscript
 done
 
 #fscript=`pwd`/$mscript
