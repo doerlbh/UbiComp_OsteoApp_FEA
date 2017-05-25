@@ -1,25 +1,18 @@
-% analysis.m for experiment apr21
+% analysis.m for experiment apr21 
 % Baihan Lin, Apr 2017
 
 clear all; close all;
 
 load('apr21.mat')
 
-path=('/Users/DoerLBH/Dropbox/git/UbiComp_OsteoApp_FEA/raspberry_pi/apr21/out/');
+path=('/Users/DoerLBH/Dropbox/git/UbiComp_OsteoApp_FEA/raspberry_pi/osteoapp/apr21/out/');
 system(['mkdir ' path]);
 
 %%
 
-size = length(acc0_04_24_00_04_56);
-plane0 = var(acc0_04_24_00_04_56);
-plane1 = var(acc1_04_24_00_04_56);
-s_acc0_04_24_00_04_56=zeros(size,1);
-s_acc1_04_24_00_04_56=zeros(size,1);
-
-for n = 1:size
-    s_acc0_04_24_00_04_56(n) = acc0_04_24_00_04_56(n,:)*plane0.'/norm(plane0,2);
-    s_acc1_04_24_00_04_56(n) = acc1_04_24_00_04_56(n,:)*plane1.'/norm(plane1,2);
-end
+[val0, idx0] = max(var(acc0_04_24_00_04_56));
+n_acc0_04_24_00_04_56 = sqrt(sum(acc0_04_24_00_04_56.^2,2));
+n_acc1_04_24_00_04_56 = sqrt(sum(acc1_04_24_00_04_56.^2,2));
 
 nwin = 100;
 wind = kaiser(nwin,10);
@@ -27,11 +20,7 @@ nlap = nwin-10;
 nfft = 1024;
 Fs = 1/0.0003;
 
-figure(1)
-spectrogram(s_acc0_04_24_00_04_56,wind,nlap,nfft,Fs,'yaxis')
-title('Spectogram\_04\_24\_00\_04\_56');
-filename = strcat(path, 'Spectogram_04_24_00_04_56.png');
-saveas(gcf, filename,'png');
+spectrogram(n_acc0_04_24_00_04_56,wind,nlap,nfft,Fs,'yaxis')
 
 %% -----acc0_04_24_00_04_56 acc1_04_24_00_04_56------
 
@@ -43,11 +32,11 @@ maxval=0;
 maxindex=0;
 
 for m = 1:length(acc0_04_24_00_04_56)-n
-    s=sum(n_acc0_04_24_00_04_56(m:m+n-1));
-    if(s>maxval)
-        maxval = s;
-        maxindex = m;
-    end
+s=sum(n_acc0_04_24_00_04_56(m:m+n-1));
+if(s>maxval)
+maxval = s;
+maxindex = m;
+end
 end
 
 p01 = n_acc0_04_24_00_04_56(maxindex:maxindex+n-1)./n_acc1_04_24_00_04_56(maxindex:maxindex+n-1);
@@ -105,11 +94,11 @@ maxval=0;
 maxindex=0;
 
 for m = 1:length(acc0_04_24_00_07_20)-n
-    s=sum(n_acc0_04_24_00_07_20(m:m+n-1));
-    if(s>maxval)
-        maxval = s;
-        maxindex = m;
-    end
+s=sum(n_acc0_04_24_00_07_20(m:m+n-1));
+if(s>maxval)
+maxval = s;
+maxindex = m;
+end
 end
 
 p01 = n_acc0_04_24_00_07_20(maxindex:maxindex+n-1)./n_acc1_04_24_00_07_20(maxindex:maxindex+n-1);
@@ -167,11 +156,11 @@ maxval=0;
 maxindex=0;
 
 for m = 1:length(acc0_04_24_00_09_23)-n
-    s=sum(n_acc0_04_24_00_09_23(m:m+n-1));
-    if(s>maxval)
-        maxval = s;
-        maxindex = m;
-    end
+s=sum(n_acc0_04_24_00_09_23(m:m+n-1));
+if(s>maxval)
+maxval = s;
+maxindex = m;
+end
 end
 
 p01 = n_acc0_04_24_00_09_23(maxindex:maxindex+n-1)./n_acc1_04_24_00_09_23(maxindex:maxindex+n-1);
@@ -229,11 +218,11 @@ maxval=0;
 maxindex=0;
 
 for m = 1:length(acc0_04_24_00_11_14)-n
-    s=sum(n_acc0_04_24_00_11_14(m:m+n-1));
-    if(s>maxval)
-        maxval = s;
-        maxindex = m;
-    end
+s=sum(n_acc0_04_24_00_11_14(m:m+n-1));
+if(s>maxval)
+maxval = s;
+maxindex = m;
+end
 end
 
 p01 = n_acc0_04_24_00_11_14(maxindex:maxindex+n-1)./n_acc1_04_24_00_11_14(maxindex:maxindex+n-1);
@@ -291,11 +280,11 @@ maxval=0;
 maxindex=0;
 
 for m = 1:length(acc0_04_24_00_13_16)-n
-    s=sum(n_acc0_04_24_00_13_16(m:m+n-1));
-    if(s>maxval)
-        maxval = s;
-        maxindex = m;
-    end
+s=sum(n_acc0_04_24_00_13_16(m:m+n-1));
+if(s>maxval)
+maxval = s;
+maxindex = m;
+end
 end
 
 p01 = n_acc0_04_24_00_13_16(maxindex:maxindex+n-1)./n_acc1_04_24_00_13_16(maxindex:maxindex+n-1);
@@ -353,11 +342,11 @@ maxval=0;
 maxindex=0;
 
 for m = 1:length(acc0_04_24_00_15_16)-n
-    s=sum(n_acc0_04_24_00_15_16(m:m+n-1));
-    if(s>maxval)
-        maxval = s;
-        maxindex = m;
-    end
+s=sum(n_acc0_04_24_00_15_16(m:m+n-1));
+if(s>maxval)
+maxval = s;
+maxindex = m;
+end
 end
 
 p01 = n_acc0_04_24_00_15_16(maxindex:maxindex+n-1)./n_acc1_04_24_00_15_16(maxindex:maxindex+n-1);
@@ -415,11 +404,11 @@ maxval=0;
 maxindex=0;
 
 for m = 1:length(acc0_04_24_00_16_51)-n
-    s=sum(n_acc0_04_24_00_16_51(m:m+n-1));
-    if(s>maxval)
-        maxval = s;
-        maxindex = m;
-    end
+s=sum(n_acc0_04_24_00_16_51(m:m+n-1));
+if(s>maxval)
+maxval = s;
+maxindex = m;
+end
 end
 
 p01 = n_acc0_04_24_00_16_51(maxindex:maxindex+n-1)./n_acc1_04_24_00_16_51(maxindex:maxindex+n-1);
@@ -477,11 +466,11 @@ maxval=0;
 maxindex=0;
 
 for m = 1:length(acc0_04_24_00_25_36)-n
-    s=sum(n_acc0_04_24_00_25_36(m:m+n-1));
-    if(s>maxval)
-        maxval = s;
-        maxindex = m;
-    end
+s=sum(n_acc0_04_24_00_25_36(m:m+n-1));
+if(s>maxval)
+maxval = s;
+maxindex = m;
+end
 end
 
 p01 = n_acc0_04_24_00_25_36(maxindex:maxindex+n-1)./n_acc1_04_24_00_25_36(maxindex:maxindex+n-1);
@@ -539,11 +528,11 @@ maxval=0;
 maxindex=0;
 
 for m = 1:length(acc0_04_24_00_27_10)-n
-    s=sum(n_acc0_04_24_00_27_10(m:m+n-1));
-    if(s>maxval)
-        maxval = s;
-        maxindex = m;
-    end
+s=sum(n_acc0_04_24_00_27_10(m:m+n-1));
+if(s>maxval)
+maxval = s;
+maxindex = m;
+end
 end
 
 p01 = n_acc0_04_24_00_27_10(maxindex:maxindex+n-1)./n_acc1_04_24_00_27_10(maxindex:maxindex+n-1);
@@ -601,11 +590,11 @@ maxval=0;
 maxindex=0;
 
 for m = 1:length(acc0_04_24_00_28_50)-n
-    s=sum(n_acc0_04_24_00_28_50(m:m+n-1));
-    if(s>maxval)
-        maxval = s;
-        maxindex = m;
-    end
+s=sum(n_acc0_04_24_00_28_50(m:m+n-1));
+if(s>maxval)
+maxval = s;
+maxindex = m;
+end
 end
 
 p01 = n_acc0_04_24_00_28_50(maxindex:maxindex+n-1)./n_acc1_04_24_00_28_50(maxindex:maxindex+n-1);
@@ -663,11 +652,11 @@ maxval=0;
 maxindex=0;
 
 for m = 1:length(acc0_04_24_00_32_31)-n
-    s=sum(n_acc0_04_24_00_32_31(m:m+n-1));
-    if(s>maxval)
-        maxval = s;
-        maxindex = m;
-    end
+s=sum(n_acc0_04_24_00_32_31(m:m+n-1));
+if(s>maxval)
+maxval = s;
+maxindex = m;
+end
 end
 
 p01 = n_acc0_04_24_00_32_31(maxindex:maxindex+n-1)./n_acc1_04_24_00_32_31(maxindex:maxindex+n-1);
@@ -725,11 +714,11 @@ maxval=0;
 maxindex=0;
 
 for m = 1:length(acc0_04_24_00_34_11)-n
-    s=sum(n_acc0_04_24_00_34_11(m:m+n-1));
-    if(s>maxval)
-        maxval = s;
-        maxindex = m;
-    end
+s=sum(n_acc0_04_24_00_34_11(m:m+n-1));
+if(s>maxval)
+maxval = s;
+maxindex = m;
+end
 end
 
 p01 = n_acc0_04_24_00_34_11(maxindex:maxindex+n-1)./n_acc1_04_24_00_34_11(maxindex:maxindex+n-1);
@@ -787,11 +776,11 @@ maxval=0;
 maxindex=0;
 
 for m = 1:length(acc0_04_24_00_35_57)-n
-    s=sum(n_acc0_04_24_00_35_57(m:m+n-1));
-    if(s>maxval)
-        maxval = s;
-        maxindex = m;
-    end
+s=sum(n_acc0_04_24_00_35_57(m:m+n-1));
+if(s>maxval)
+maxval = s;
+maxindex = m;
+end
 end
 
 p01 = n_acc0_04_24_00_35_57(maxindex:maxindex+n-1)./n_acc1_04_24_00_35_57(maxindex:maxindex+n-1);
@@ -849,11 +838,11 @@ maxval=0;
 maxindex=0;
 
 for m = 1:length(acc0_04_24_00_41_09)-n
-    s=sum(n_acc0_04_24_00_41_09(m:m+n-1));
-    if(s>maxval)
-        maxval = s;
-        maxindex = m;
-    end
+s=sum(n_acc0_04_24_00_41_09(m:m+n-1));
+if(s>maxval)
+maxval = s;
+maxindex = m;
+end
 end
 
 p01 = n_acc0_04_24_00_41_09(maxindex:maxindex+n-1)./n_acc1_04_24_00_41_09(maxindex:maxindex+n-1);
@@ -911,11 +900,11 @@ maxval=0;
 maxindex=0;
 
 for m = 1:length(acc0_04_24_00_43_52)-n
-    s=sum(n_acc0_04_24_00_43_52(m:m+n-1));
-    if(s>maxval)
-        maxval = s;
-        maxindex = m;
-    end
+s=sum(n_acc0_04_24_00_43_52(m:m+n-1));
+if(s>maxval)
+maxval = s;
+maxindex = m;
+end
 end
 
 p01 = n_acc0_04_24_00_43_52(maxindex:maxindex+n-1)./n_acc1_04_24_00_43_52(maxindex:maxindex+n-1);
@@ -973,11 +962,11 @@ maxval=0;
 maxindex=0;
 
 for m = 1:length(acc0_04_24_00_48_49)-n
-    s=sum(n_acc0_04_24_00_48_49(m:m+n-1));
-    if(s>maxval)
-        maxval = s;
-        maxindex = m;
-    end
+s=sum(n_acc0_04_24_00_48_49(m:m+n-1));
+if(s>maxval)
+maxval = s;
+maxindex = m;
+end
 end
 
 p01 = n_acc0_04_24_00_48_49(maxindex:maxindex+n-1)./n_acc1_04_24_00_48_49(maxindex:maxindex+n-1);
@@ -1035,11 +1024,11 @@ maxval=0;
 maxindex=0;
 
 for m = 1:length(acc0_04_24_00_50_59)-n
-    s=sum(n_acc0_04_24_00_50_59(m:m+n-1));
-    if(s>maxval)
-        maxval = s;
-        maxindex = m;
-    end
+s=sum(n_acc0_04_24_00_50_59(m:m+n-1));
+if(s>maxval)
+maxval = s;
+maxindex = m;
+end
 end
 
 p01 = n_acc0_04_24_00_50_59(maxindex:maxindex+n-1)./n_acc1_04_24_00_50_59(maxindex:maxindex+n-1);
@@ -1097,11 +1086,11 @@ maxval=0;
 maxindex=0;
 
 for m = 1:length(acc0_04_24_00_52_26)-n
-    s=sum(n_acc0_04_24_00_52_26(m:m+n-1));
-    if(s>maxval)
-        maxval = s;
-        maxindex = m;
-    end
+s=sum(n_acc0_04_24_00_52_26(m:m+n-1));
+if(s>maxval)
+maxval = s;
+maxindex = m;
+end
 end
 
 p01 = n_acc0_04_24_00_52_26(maxindex:maxindex+n-1)./n_acc1_04_24_00_52_26(maxindex:maxindex+n-1);
@@ -1159,11 +1148,11 @@ maxval=0;
 maxindex=0;
 
 for m = 1:length(acc0_04_24_00_54_06)-n
-    s=sum(n_acc0_04_24_00_54_06(m:m+n-1));
-    if(s>maxval)
-        maxval = s;
-        maxindex = m;
-    end
+s=sum(n_acc0_04_24_00_54_06(m:m+n-1));
+if(s>maxval)
+maxval = s;
+maxindex = m;
+end
 end
 
 p01 = n_acc0_04_24_00_54_06(maxindex:maxindex+n-1)./n_acc1_04_24_00_54_06(maxindex:maxindex+n-1);
@@ -1221,11 +1210,11 @@ maxval=0;
 maxindex=0;
 
 for m = 1:length(acc0_04_24_00_55_42)-n
-    s=sum(n_acc0_04_24_00_55_42(m:m+n-1));
-    if(s>maxval)
-        maxval = s;
-        maxindex = m;
-    end
+s=sum(n_acc0_04_24_00_55_42(m:m+n-1));
+if(s>maxval)
+maxval = s;
+maxindex = m;
+end
 end
 
 p01 = n_acc0_04_24_00_55_42(maxindex:maxindex+n-1)./n_acc1_04_24_00_55_42(maxindex:maxindex+n-1);
