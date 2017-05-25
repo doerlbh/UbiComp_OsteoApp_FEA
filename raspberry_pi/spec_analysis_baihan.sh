@@ -39,10 +39,17 @@ do
 
 	echo "figure(1)\n" >> $mscript
 	echo "spectrogram(s_$acc0,wind,nlap,nfft,Fs,'yaxis')\n" >> $mscript
-	echo "title('Spectogram\_04\_24\_00\_04\_56');\n" >> $mscript
-	echo "filename = strcat(path, 'Spectogram_04_24_00_04_56.png');\n" >> $mscript
+	echo "title('Spectogram ${acc0//_/\\_}');\n" >> $mscript
+	echo "filename = strcat(path, 'spec_$acc0.png');\n" >> $mscript
 	echo "saveas(gcf, filename,'png');\n" >> $mscript
-	echo "close(figure(1));\n" >> $mscript
+	echo "close(figure(1));\n\n" >> $mscript
+
+	echo "figure(2)\n" >> $mscript
+	echo "spectrogram(s_$acc1,wind,nlap,nfft,Fs,'yaxis')\n" >> $mscript
+	echo "title('Spectogram ${acc1//_/\\_}');\n" >> $mscript
+	echo "filename = strcat(path, 'spec_$acc1.png');\n" >> $mscript
+	echo "saveas(gcf, filename,'png');\n" >> $mscript
+	echo "close(figure(2));\n" >> $mscript
 done
 
 #fscript=`pwd`/$mscript
