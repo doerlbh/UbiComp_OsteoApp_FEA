@@ -3,7 +3,7 @@
 # -*- coding: utf-8 -*-
 # Code: spectogram analysis
 # Author: Baihan Lin
-# Date: Apr 2017
+# Date: May 2017
 # Lab: UbiComp Lab
 
 folder=`pwd`

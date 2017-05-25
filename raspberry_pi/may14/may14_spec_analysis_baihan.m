@@ -21,7 +21,7 @@ s_acc0_05_14_20_27_54=zeros(size,1);
 s_acc1_05_14_20_27_54=zeros(size,1);
 
 
-for n = 1:size
+parfor n = 1:size
 
 s_acc0_05_14_20_27_54(n) = acc0_05_14_20_27_54(n,:)*plane0.'/norm(plane0,2);
 
@@ -91,7 +91,7 @@ s_acc0_05_14_20_29_38=zeros(size,1);
 s_acc1_05_14_20_29_38=zeros(size,1);
 
 
-for n = 1:size
+parfor n = 1:size
 
 s_acc0_05_14_20_29_38(n) = acc0_05_14_20_29_38(n,:)*plane0.'/norm(plane0,2);
 
@@ -161,7 +161,7 @@ s_acc0_05_14_20_31_12=zeros(size,1);
 s_acc1_05_14_20_31_12=zeros(size,1);
 
 
-for n = 1:size
+parfor n = 1:size
 
 s_acc0_05_14_20_31_12(n) = acc0_05_14_20_31_12(n,:)*plane0.'/norm(plane0,2);
 
@@ -231,7 +231,7 @@ s_acc0_05_14_20_32_44=zeros(size,1);
 s_acc1_05_14_20_32_44=zeros(size,1);
 
 
-for n = 1:size
+parfor n = 1:size
 
 s_acc0_05_14_20_32_44(n) = acc0_05_14_20_32_44(n,:)*plane0.'/norm(plane0,2);
 
