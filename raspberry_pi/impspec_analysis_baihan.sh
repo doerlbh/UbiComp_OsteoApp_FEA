@@ -24,6 +24,8 @@ do
 	echo "pathN=(strcat(path,'$acc0','/'));" >> $mscript
 	echo "system(['mkdir ' pathN]);\n" >> $mscript
 
+	echo "set(0,'DefaultFigureVisible', 'off');\n" >> $mscript
+	
 	echo "size = length($acc0);" >> $mscript
 	echo "plane0 = var($acc0);" >> $mscript
 	echo "plane1 = var($acc1);" >> $mscript
@@ -48,41 +50,33 @@ do
 	echo "    s_$acc1(n) = $acc1(n,:)*plane1.'/norm(plane1,2);" >> $mscript
 	echo "end\n" >> $mscript
 
-	echo "figure(1)" >> $mscript
 	echo "plot(rate*[1:size],s_$acc0);" >> $mscript
 	echo "title('calibrated signal for ${acc0//_/\\_}');" >> $mscript
 	echo "xlabel('t(s)');" >> $mscript
 	echo "ylabel('signal');" >> $mscript
 	echo "filename = strcat(pathN, 'signal_$acc0.png');" >> $mscript
 	echo "saveas(gcf, filename,'png');" >> $mscript
-	echo "close(figure(1));\n" >> $mscript
 
-	echo "figure(2)" >> $mscript
 	echo "plot(rate*[1:size],s_$acc1);" >> $mscript
 	echo "title('calibrated signal for ${acc1//_/\\_}');" >> $mscript
 	echo "xlabel('t(s)');" >> $mscript
 	echo "ylabel('signal');" >> $mscript
 	echo "filename = strcat(pathN, 'signal_$acc1.png');" >> $mscript
 	echo "saveas(gcf, filename,'png');" >> $mscript
-	echo "close(figure(2));\n" >> $mscript
 
 	echo "for tp = frame+1:size-2*frame" >> $mscript
 	echo "    if ~pulse0(tp) && (s_$acc0(tp) > 100)" >> $mscript
-	echo "        figure(3)" >> $mscript
 	echo "        spectrogram(s_$acc0(tp-frame:tp+frame*2),wind,nlap,nfft,Fs,'yaxis');" >> $mscript
  	echo "       title(strcat('Impulse spectogram ${acc0//_/\\_}','\_',int2str(tp)));" >> $mscript
 	echo "        filename = strcat(pathN, strcat('impspec_', '$acc0','_',int2str(tp),'.png'));" >> $mscript
 	echo "        saveas(gcf, filename,'png');" >> $mscript
-	echo "        close(figure(3));" >> $mscript
 	echo "        pulse0(tp:tp+frame*2) = 1;" >> $mscript
 	echo "    end" >> $mscript
 	echo "    if ~pulse1(tp) && (s_$acc1(tp) > 100)" >> $mscript
-	echo "        figure(4)" >> $mscript
 	echo "        spectrogram(s_$acc1(tp-frame:tp+frame*2),wind,nlap,nfft,Fs,'yaxis');" >> $mscript
 	echo "        title(strcat('Impulse spectogram ${acc1//_/\\_}','\_',int2str(tp)));" >> $mscript
 	echo "        filename = strcat(pathN, strcat('impspec_', '$acc1','_',int2str(tp),'.png'));" >> $mscript
 	echo "        saveas(gcf, filename,'png');" >> $mscript
-	echo "        close(figure(4));" >> $mscript
 	echo "        pulse1(tp:tp+frame*2) = 1;" >> $mscript
 	echo "    end" >> $mscript
 	echo "end\n\n" >> $mscript
