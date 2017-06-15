@@ -66,5 +66,6 @@ for c = 0:100
         min = err;
         td = c;
     end
+    
 end
 td
