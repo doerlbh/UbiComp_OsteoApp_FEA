@@ -142,7 +142,6 @@
   \alignauthor{Baihan Lin\\
     \affaddr{UbiComp Lab}\\
     \affaddr{University of Washington}\\
-    \affaddr{Computer Science and Engineering}\\
     \affaddr{Seattle, WA 98105, USA}\\
     \email{doerlbh@gmail.com}}\\
 }
@@ -150,40 +149,54 @@
 \maketitle
 
 \begin{abstract}
-The project aims to conduct a finite element analysis (FEA) on a bone-like structure to simulate the vibration properties of a bone or arm. This simulation is supportive to OsteoApp, a smartphone app for personal osteoporosis screening that tests bone density and tells people if they are at risk for bone disease. OsteoApp uses a vibration technique that takes advantage of the accelerometers on a hand-held smartphone to measure bone stiffness and density, based on the vibrations that pass through the user's arm when the elbow is tapped. The FEA simulation and bone density frequency exploration in this study can help us better understand the physical relationship and proper methodology of the external tapping with the measured signals. This study is conducted by Baihan Lin, mentored by Morelle Arian and Josh Fromm, and supervised by Prof. Shwetak Patel.
+The project aims to conduct a finite element analysis (FEA) on a bone-like structure to simulate the vibration properties of a bone or arm. This simulation is supportive to OsteoApp, a smartphone app for personal osteoporosis screening that tests bone density and tells people if they are at risk for bone disease. OsteoApp uses a vibration technique that takes advantage of the accelerometers on a hand-held smartphone to measure bone stiffness and density, based on the vibrations that pass through the user's arm when the elbow is tapped. The FEA simulation and bone density frequency exploration in this study can help us better understand the physical relationship and proper methodology of the external tapping with the measured signals. In addition to the characterization of bone density properties, the study also brings up innovative mathematical and experimental approaches for further application developments in both acceleration/frequency-based and time delay-based contexts. This study is conducted by Baihan Lin, mentored by Morelle Arian and Josh Fromm, and supervised by Prof. Shwetak Patel.
 
 \end{abstract}
 
 \category{H.5.m.}{Information Interfaces and Presentation
  (e.g. HCI)}{Miscellaneous}{}{}
 
-\keywords{signal processing, ubiquitous computing, health sensing, mobile phones, osteoporosis screening, finite elements analysis, machine learning}
+\keywords{signal processing, ubiquitous computing, health sensing, mobile phones, osteoporosis screening, finite elements analysis, spectrogram analysis, machine learning}
 
 \section{Introduction}
 
-Osteoporosis is a disease where increased bone weakness increases the risk of a broken bone. OsteoApp aims to utilize the accelerometers on a hand-held smartphone to measure bone strength, based on the vibrations that pass through the user's arm when the elbow is tapped. To facilitate the understanding of the relationship between the external tapping with the measured signals, finite element analysis (FEA) is applied, as a computerized method for predicting how a product reacts to real-world forces, vibration, heat, fluid flow, and other physical effects. The study aims to understand the information that accelerometers may be collecting based on the simulated properties of the bone-like structures. \\
+Osteoporosis is a disease where increased bone weakness increases the risk of a broken bone. OsteoApp aims to utilize the accelerometers on a hand-held smartphone to measure bone strength, based on the vibrations that pass through the user's arm when the elbow is tapped. To facilitate the understanding of the relationship between the external tapping with the measured signals, finite element analysis (FEA) is applied, as a computerized method for predicting how a product reacts to real-world forces, vibration, heat, fluid flow, and other physical effects. The study aims to understand the information that accelerometers may be collecting based on the simulated properties of the bone-like structures, as well as proposing innovative mathematical and experimental approaches to measure bone density. 
 
-The study plans for three stages:
-\begin{itemize}
-\item simulate a simplified bone-like structure
-\item simulate the bone with more details and less assumptions
-\item formulate the equations of the signal properties
-\newline
-\end{itemize}
+\begin{enumerate}
+   \item The study covered four stages:
+	\begin{itemize}
+	\item simulate a simplified bone-like structure
+	\item simulate bone with more specifications
+	\item formulate the equations of the signal properties
+	\item develop mathematical and experimental methods to analyze bone density
+	\end{itemize}
 
-For each bone models, several FEA analyses can be conducted:
-\begin{itemize}
-\item static stress analysis
-\item natural frequency analysis
-\item drop test analysis with rigid impact
-\item drop test analysis with flexible impact
-\item drop test analysis with damping effect
-\item linear dynamic modeling with modal damping 
-\end{itemize}
+	\item For each models, FEA analyses was conducted:
+	\begin{itemize}
+	\item static stress analysis
+	\item natural frequency analysis
+	\item drop test analysis with rigid impact
+	\item drop test analysis with flexible impact
+	\item drop test analysis with damping effect
+	\item linear dynamic modeling with modal damping 
+	\end{itemize}
+
+	\item Experimentally, data were collected and analyzed:
+	\begin{itemize}
+	\item linear sweep on real human bone
+	\item linear sweep on my arm 
+	\item linear sweep in different angles
+	\item linear sweep in different surfaces
+	\item sporadic tapping in different materials
+	\item vibrator of the smartphone
+	\item smartphone audio-speaker vibration
+	\item time delay via audio recording
+	\end{itemize}
+\end{enumerate}
 
 \section{Progress} 
 
-UPDATE-\today: So far, I have conducted multiple simulations for a simplified combined model of bones (a wooden complex combining two bent rods). I also created the basic formula of the natural frequency of the bone. I experimentally tested the signal generated by accelerator under a frequency sweep as well as explored the possibility of measuring the elasticity of wood. I performed linear sweep on real human bone and my arm, and based on the analysis plots, determined which pose or solution is better for the product design. My mathematical calculations on the centilever beam natural frequency match the experimental measurements. The result also confirms that horizontal vibration (phone on the side of the arm) has a larger input than from the bottom of the arm. I tested the quality of the signal from different materials of hammers to determine the most safe and reliable apparatus for vibration sources. It turns out that doesn't make much difference regarding the quality. For the possibility of using another phone as vibrator, I collaborated with Josh who worked on controlling the vibrator of the smartphone. It turned out that smartphones cannot easily change the frequencies of the vibrator and the signal is noisy. I have been cogitating about what would be the next step of my study as well as the osteoApp in general. For example, the linear sweep may still be implemented with a smartphone audiospeaker (given loud enough setting) or a linear frequency motor. I also reflected on my previous method to extract the 3-dimensional accelerometer signal and improved it with a mathematical projection on the maximum propagating plane. To validate my findings last time on the selections of hitting materials, I plotted spectograms for all previous signals and it doesn't highlight the natural frequencies like I expected. In addition, the signals by random impacts look similarly noisy in the spectograms. To look for potential "lags" of signals at certain frequencies in the spectograms, I automated the process to ensure a refined analysis each individual impulse. I extracted each single impulse out with a time frame of 1 second. However, while I expected the spectogram to be having a lag of timing in certain frequency, the time lags are not that obvious. For the next step, I hypothesize that the a bigger hammer would make a clearer signal due to a bigger momentum to cause a better wide-band frequencies.
+UPDATE - \today: So far, I have conducted multiple simulations for a simplified combined model of bones (a wooden complex combining two bent rods). I also created the basic formula of the natural frequency of the bone. I experimentally tested the signal generated by accelerator under a frequency sweep as well as explored the possibility of measuring the elasticity of wood. I performed linear sweep on real human bone and my arm, and based on the analysis plots, determined which pose or solution is better for the product design. My mathematical calculations on the cantilever beam natural frequency match the experimental measurements. The result also confirms that horizontal vibration (phone on the side of the arm) has a larger input than from the bottom of the arm. I tested the quality of the signal from different materials of hammers to determine the most safe and reliable apparatus for vibration sources. It turns out that doesn't make much difference regarding the quality. For the possibility of using another phone as vibrator, I collaborated with Josh who worked on controlling the vibrator of the smart phone. It turned out that smart phones cannot easily change the frequencies of the vibrator and the signal is noisy. I have been cogitating about what would be the next step of my study as well as the OsteoApp in general. For example, the linear sweep may still be implemented with a smartphone audio-speaker (given loud enough setting) or a linear frequency motor. I also reflected on my previous method to extract the 3-dimensional accelerometer signal and improved it with a mathematical projection on the maximum propagating plane. To validate my findings last time on the selections of hitting materials, I plotted spectrograms for all previous signals and it doesn't highlight the natural frequencies like I expected. In addition, the signals by random impacts look similarly noisy in the spectrograms. To look for potential "lags" of signals at certain frequencies in the spectrograms, I automated the process to ensure a refined analysis each individual impulse. I extracted each single impulse out with a time frame of 1 second. However, while I expected the spectrogram to be having a lag of timing in certain frequency, the time lags are not that obvious. For the next step, I hypothesize that the a bigger hammer would make a clearer signal due to a bigger momentum to cause a better wide-band frequencies. To explore the possibility of using time delay as a indication of bone density, I created a pipeline to extract audio recording from both ends of the arm and calculated the least square time delay. Coming back into the drop test earlier, I explored on how different materials can have different accelerations with a purpose to capture a change in the frequency domain. 
 
 \subsection{2017/03/30: Interview and Setup}
 
@@ -894,7 +907,7 @@ It is also noted that, the signals from the vibration of the smartphone are very
 
 \subsection{2017/05/22: Mathematical improvement and reflection}
 
-From my results last weeks, I have been cogitating about what would be the next step of my study as well as the osteoApp in general. For example, the linear sweep may still be implemented with a smartphone audiospeaker (given loud enough setting) or a linear frequency motor. I also reflected on my previous method to extract the 3-dimensional accelerometer signal and improved it with a mathematical projection on the maximum propagating plane. To validate my findings last time on the selections of hitting materials, I plotted spectograms for all previous signals and it doesn't highlight the natural frequencies like I expected. In addition, the signals by random impacts look similarly noisy in the spectograms.
+From my results last weeks, I have been cogitating about what would be the next step of my study as well as the osteoApp in general. For example, the linear sweep may still be implemented with a smartphone audiospeaker (given loud enough setting) or a linear frequency motor. I also reflected on my previous method to extract the 3-dimensional accelerometer signal and improved it with a mathematical projection on the maximum propagating plane. To validate my findings last time on the selections of hitting materials, I plotted spectrograms for all previous signals and it doesn't highlight the natural frequencies like I expected. In addition, the signals by random impacts look similarly noisy in the spectrograms.
 
 \subsubsection{Reflections on future directions} 
 
@@ -908,102 +921,122 @@ I also reflected on my previous method to extract the 3-dimensional acceleromete
 proj_{\bf a}^{\bf b}=\frac{\bf a *\bf b}{\|\bf b\|}\frac{\bf a}{\|\bf a\|}
 \end{equation}
 
-\subsubsection{Spectograms offer more detailed information about existing experiments} 
+\subsubsection{Spectrograms offer more detailed information about existing experiments} 
 
-I replotted all the accelerometers signals in spectograms, with a sampling rate of 0.0003 secs, NFFT of 1024, Fs of 1/0.0003, window size of 100 samples, overlap of 90. From Figure \ref{fig:tex_1234} and Figure \ref{fig:tex_5678}, we can see that the linear sweep is displayed, however with unique textures uncertain of reasons. From Figure \ref{fig:tex_mat}, it looks like the signals were more flat then outstanding, therefore, not much can be told by our naked eyes. Perhaps machine learning can grant us more insights onto these images.
+I replotted all the accelerometers signals in spectrograms, with a sampling rate of 0.0003 secs, NFFT of 1024, Fs of 1/0.0003, window size of 100 samples, overlap of 90. From Figure \ref{fig:tex_1234} and Figure \ref{fig:tex_5678}, we can see that the linear sweep is displayed, however with unique textures uncertain of reasons. From Figure \ref{fig:tex_mat}, it looks like the signals were more flat then outstanding, therefore, not much can be told by our naked eyes. Perhaps machine learning can grant us more insights onto these images.
 
 \begin{figure*}
   \centering
   \includegraphics[width=1.95\columnwidth]{figures/tex_mat}
-  \caption{Spectograms for the four experiments previously on the signal difference hitting with different materials.}
+  \caption{Spectrograms for the four experiments previously on the signal difference hitting with different materials.}
     ~\label{fig:tex_mat}
 \end{figure*}
 
 \begin{figure*}
   \centering
   \includegraphics[width=1.6\columnwidth]{figures/tex_1234}
-  \caption{Spectograms for the four experiments previously in Pose 1 through 4.}
+  \caption{Spectrograms for the four experiments previously in Pose 1 through 4.}
     ~\label{fig:tex_1234}
 \end{figure*}
 
 \begin{figure*}
   \centering
   \includegraphics[width=1.6\columnwidth]{figures/tex_5678}
-  \caption{Spectograms for the four experiments previously in Pose 5 through 8.}
+  \caption{Spectrograms for the four experiments previously in Pose 5 through 8.}
     ~\label{fig:tex_5678}
 \end{figure*}
 
-\subsection{2017/05/29: More refined spectogram analysis}
+\subsection{2017/05/29: More refined spectrogram analysis}
 
-Building upon my finding in last week, that spectograms across entire time span are not fine enough to analyze each individual impulse, I extracted each single impulse out with a time frame of 1 second, such as the example demonstrated in Figure \ref{fig:impspec_acc0_05_14_20_32_44_160578}. However, while I expected the spectogram to be having a lag of timing in certain frequency, as shown in Figure \ref{fig:Tex_impspec_acc0_09} through \ref{fig:Tex_impspec_acc1_12}, the time lags are not that obvious. For the next step, I hypothesize that the a bigger hammer would make a clearer signal due to a bigger momentum to cause a better wide-band frequencies.
+Building upon my finding in last week, that spectrograms across entire time span are not fine enough to analyze each individual impulse, I extracted each single impulse out with a time frame of 1 second, such as the example demonstrated in Figure \ref{fig:impspec_acc0_05_14_20_32_44_160578}. However, while I expected the spectrogram to be having a lag of timing in certain frequency, as shown in Figure \ref{fig:Tex_impspec_acc0_09} through \ref{fig:Tex_impspec_acc1_12}, the time lags are not that obvious. For the next step, I hypothesize that the a bigger hammer would make a clearer signal due to a bigger momentum to cause a better wide-band frequencies.
 
 \begin{figure}
   \centering
   \includegraphics[width=0.9\columnwidth]{figures/impspec_acc0_05_14_20_32_44_160578}
-  \caption{Impulse spectograms of $acc0\_05\_14\_20\_32\_44$ at time step 160578 for pose 12.}
+  \caption{Impulse spectrograms of $acc0\_05\_14\_20\_32\_44$ at time step 160578 for pose 12.}
     ~\label{fig:impspec_acc0_05_14_20_32_44_160578}
 \end{figure}
 
 \begin{figure*}
   \centering
   \includegraphics[width=1.95\columnwidth]{figures/Tex_impspec_acc0_09}
-  \caption{Impulse spectograms of acc0 for pose 9.}
+  \caption{Impulse spectrograms of acc0 for pose 9.}
     ~\label{fig:Tex_impspec_acc0_09}
 \end{figure*}
 
 \begin{figure*}
   \centering
   \includegraphics[width=1.95\columnwidth]{figures/Tex_impspec_acc1_09}
-  \caption{Impulse spectograms of acc1 for pose 9.}
+  \caption{Impulse spectrograms of acc1 for pose 9.}
     ~\label{fig:Tex_impspec_acc1_09}
 \end{figure*}
 
 \begin{figure*}
   \centering
   \includegraphics[width=1.95\columnwidth]{figures/Tex_impspec_acc0_10}
-  \caption{Impulse spectograms of acc0 for pose 10.}
+  \caption{Impulse spectrograms of acc0 for pose 10.}
     ~\label{fig:Tex_impspec_acc0_10}
 \end{figure*}
 
 \begin{figure*}
   \centering
   \includegraphics[width=1.95\columnwidth]{figures/Tex_impspec_acc1_10}
-  \caption{Impulse spectograms of acc1 for pose 10.}
+  \caption{Impulse spectrograms of acc1 for pose 10.}
     ~\label{fig:Tex_impspec_acc1_10}
 \end{figure*}
 
 \begin{figure*}
   \centering
   \includegraphics[width=1.95\columnwidth]{figures/Tex_impspec_acc0_11}
-  \caption{Impulse spectograms of acc0 for pose 11.}
+  \caption{Impulse spectrograms of acc0 for pose 11.}
     ~\label{fig:Tex_impspec_acc0_11}
 \end{figure*}
 
 \begin{figure*}
   \centering
   \includegraphics[width=1.95\columnwidth]{figures/Tex_impspec_acc1_11}
-  \caption{Impulse spectograms of acc1 for pose 11.}
+  \caption{Impulse spectrograms of acc1 for pose 11.}
     ~\label{fig:Tex_impspec_acc1_11}
 \end{figure*}
 \begin{figure*}
   \centering
   \includegraphics[width=1.95\columnwidth]{figures/Tex_impspec_acc0_12}
-  \caption{Impulse spectograms of acc0 for pose 12.}
+  \caption{Impulse spectrograms of acc0 for pose 12.}
     ~\label{fig:Tex_impspec_acc0_12}
 \end{figure*}
 
 \begin{figure*}
   \centering
   \includegraphics[width=1.95\columnwidth]{figures/Tex_impspec_acc1_12}
-  \caption{Impulse spectograms of acc1 for pose 12.}
+  \caption{Impulse spectrograms of acc1 for pose 12.}
     ~\label{fig:Tex_impspec_acc1_12}
 \end{figure*}
 
 
+\subsection{2017/06/08: Time delay analysis}
+
+To explore the possibility of using time delay as a indication of bone density, we experimentally tested the audio recording systems for the two ends of an arm and the signals were similar. There are two challenges, the first one is how we can determine the time delay. If we use the point the signal past zero, the signal might not be one-to-one. Another challenge is that we need to make sure our measurement is sensitive enough to capture the break points. Thus, we finally adopted a high frequency audio inputs and I proposed a statistic approach, treating one signal as an estimated function to the other one, only with a phase change, which is the time delay.
+
+I created a pipeline to extract audio recording from both ends of the arm and calculated the least square time delay. As shown in Figure \ref{fig:may30_timedelay}, I did a fast Fourier transformation to cancel unnecessary noise. Using iterative method of least square mean error, the time delay is calculated to be 47 sample points for the real part of data after FFT and 89 sample points for original data points. With a sampling rate of 47000 Hz, the calculated time delay, in air it should be about $47000Hz/340m/s*0.25m = 34.56$, and in bone should be about $47000Hz/3700m/s*0.25m = 3.17$. Thus, this time delay is within the range of the audible part via air. It is necessary to find another solution to capture the relatively small time delay traveled through bone.
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.9\columnwidth]{figures/may30_timedelay}
+  \caption{original audio recordings from both ends of the arm in to measure time delay (experiment on May 30)}
+    ~\label{fig:may30_timedelay}
+\end{figure}
+
+\subsection{2017/06/15: Frequency range analysis on acceleration}
+
+Back towards the drop test earlier, as proposed by Morelle, I wish to explore on how different materials can have different accelerations with a purpose to capture a change in the frequency domain. Still the double bone model, in a drop test analysis, the time varying stresses and deformations due to an initial impact of the product with a rigid or flexible planar surface (the floor) are calculated. Again, I looked into the interesting variable "Translational Acceleration" in $mm/s^2$, because I think this signal could potentially resemble the signal sensed by the accelerometers in smartphones.
+
+In this Drop Test 4, the bone vertically drop at 5m/s with gravity considered. In this case, I consider the system without damping, so I set contact damping = 0. I also consider it to drop to a stiff surface, so I set target stiffness = rigid. The plan is to vary the materials similar to bone and drop the bone horizontally from the side to measure acceleration from both ends. 
+
+Next step would be figuring out how to change the material properties of the bone to do this comparative study, as well as researching whether there is any similar prior study.
+
 \section{Supplementary information}
 
 For complete datasets measured in the experiments, high resolution images demonstrated in the article and testing codes, please refer to my GitHub repository: \url{https://github.com/doerlbh/UbiComp_OsteoApp_FEA}.
-
 
 \section{Codes}
 
@@ -1216,19 +1249,19 @@ done
 #!/bin/bash
 
 # -*- coding: utf-8 -*-
-# Code: spectogram analysis
+# Code: spectrogram analysis
 # Author: Baihan Lin
 # Date: May 2017
 # Lab: UbiComp Lab
 
 folder=`pwd`
 mscript=${folder//*\//}_spec_analysis_baihan.m
-echo "% spectogram analysis.m for experiment 
+echo "% spectrogram analysis.m for experiment 
 ${folder//*\//} \n% Baihan Lin, May 2017\n" > $mscript
 
 echo "clear all; close all;" >> $mscript
 echo "\nload('${folder//*\//}.mat')\n" >> $mscript
-echo "path=('$folder/spectogram/');\n
+echo "path=('$folder/spectrogram/');\n
 system(['mkdir ' path]);\n" >> $mscript
 
 for f in `ls acc0*csv`
@@ -1259,7 +1292,7 @@ do
 	echo "figure(1)" >> $mscript
 	echo "spectrogram(s_$acc0,wind,nlap,
     nfft,Fs,'yaxis')" >> $mscript
-	echo "title('Spectogram ${acc0//_/\\_}');" >> $mscript
+	echo "title('Spectrogram ${acc0//_/\\_}');" >> $mscript
 	echo "filename = strcat(path, 
     'spec_$acc0.png');" >> $mscript
 	echo "saveas(gcf, filename,'png');" >> $mscript
@@ -1268,7 +1301,7 @@ do
 	echo "figure(2)" >> $mscript
 	echo "spectrogram(s_$acc1,wind,nlap,
     nfft,Fs,'yaxis')" >> $mscript
-	echo "title('Spectogram ${acc1//_/\\_}');" >> $mscript
+	echo "title('Spectrogram ${acc1//_/\\_}');" >> $mscript
 	echo "filename = strcat(path, 
     'spec_$acc1.png');" >> $mscript
 	echo "saveas(gcf, filename,'png');" >> $mscript
@@ -1277,7 +1310,7 @@ do
 	echo "figure(3)" >> $mscript
 	echo "spectrogram(s_$acc0./s_$acc1,wind,
     nlap,nfft,Fs,'yaxis')" >> $mscript
-	echo "title('Ratio Spectogram acc0${acc1//_/\\_}');" >> $mscript
+	echo "title('Ratio Spectrogram acc0${acc1//_/\\_}');" >> $mscript
 	echo "filename = strcat(path, '
     spec_ratio_acc0$acc1.png');" >> $mscript
 	echo "saveas(gcf, filename,'png');" >> $mscript
@@ -1296,19 +1329,19 @@ done
 #!/bin/bash
 
 # -*- coding: utf-8 -*-
-# Code: impulse spectogram analysis
+# Code: impulse spectrogram analysis
 # Author: Baihan Lin
 # Date: May 2017
 # Lab: UbiComp Lab
 
 folder=`pwd`
 mscript=${folder//*\//}_impspec_analysis_baihan.m
-echo "% impulse spectogram analysis.m for experiment 
+echo "% impulse spectrogram analysis.m for experiment 
 ${folder//*\//} \n% Baihan Lin, May 2017\n" > $mscript
 
 echo "clear all; close all;" >> $mscript
 echo "\nload('${folder//*\//}.mat')\n" >> $mscript
-echo "path=('$folder/impulse_spectogram/');\n
+echo "path=('$folder/impulse_spectrogram/');\n
 system(['mkdir ' path]);\n" >> $mscript
 
 for f in `ls acc0*csv`
@@ -1367,7 +1400,7 @@ do
 	echo "    if ~pulse0(tp) && (s_$acc0(tp) > 100)" >> $mscript
 	echo "        spectrogram(s_$acc0(tp-frame:
     tp+frame*2),wind,nlap,nfft,Fs,'yaxis');" >> $mscript
- 	echo "       title(strcat('Impulse spectogram 
+ 	echo "       title(strcat('Impulse spectrogram 
     ${acc0//_/\\_}','\_',int2str(tp)));" >> $mscript
 	echo "        filename = strcat(pathN, strcat('impspec_',
     '$acc0','_',int2str(tp),'.png'));" >> $mscript
@@ -1377,7 +1410,7 @@ do
 	echo "    if ~pulse1(tp) && (s_$acc1(tp) > 100)" >> $mscript
 	echo "        spectrogram(s_$acc1(tp-frame:tp+frame*2),
     wind,nlap,nfft,Fs,'yaxis');" >> $mscript
-	echo "        title(strcat('Impulse spectogram 
+	echo "        title(strcat('Impulse spectrogram 
     ${acc1//_/\\_}','\_',int2str(tp)));" >> $mscript
 	echo "        filename = strcat(pathN, strcat('impspec_',
     '$acc1','_',int2str(tp),'.png'));" >> $mscript
@@ -1482,14 +1515,14 @@ close(figure(1));close(figure(2));
 
 \subsection{Original: $may14\_spec\_analysis\_baihan.m$}\label{ss:spc_ana.m}
 \begin{lstlisting}
-% spectogram analysis.m for experiment may14 
+% spectrogram analysis.m for experiment may14 
 % Baihan Lin, May 2017
 
 clear all; close all;
 load('may14.mat')
 
 path=('/Users/DoerLBH/Dropbox/git/
-UbiComp_OsteoApp_FEA/raspberry_pi/may14/spectogram/');
+UbiComp_OsteoApp_FEA/raspberry_pi/may14/spectrogram/');
 system(['mkdir ' path]);
 
 %% -----acc0_05_14_20_27_54 acc1_05_14_20_27_54------
@@ -1515,14 +1548,14 @@ Fs = 1/0.0003;
 
 figure(1)
 spectrogram(s_acc0_05_14_20_27_54,wind,nlap,nfft,Fs,'yaxis')
-title('Spectogram acc0\_05\_14\_20\_27\_54');
+title('Spectrogram acc0\_05\_14\_20\_27\_54');
 filename = strcat(path, 'spec_acc0_05_14_20_27_54.png');
 saveas(gcf, filename,'png');
 close(figure(1));
 
 figure(2)
 spectrogram(s_acc1_05_14_20_27_54,wind,nlap,nfft,Fs,'yaxis')
-title('Spectogram acc1\_05\_14\_20\_27\_54');
+title('Spectrogram acc1\_05\_14\_20\_27\_54');
 filename = strcat(path, 'spec_acc1_05_14_20_27_54.png');
 saveas(gcf, filename,'png');
 close(figure(2));
@@ -1530,7 +1563,7 @@ close(figure(2));
 figure(3)
 spectrogram(s_acc0_05_14_20_27_54
 ./s_acc1_05_14_20_27_54,wind,nlap,nfft,Fs,'yaxis')
-title('Ratio Spectogram acc0acc1\_05\_14\_20\_27\_54');
+title('Ratio Spectrogram acc0acc1\_05\_14\_20\_27\_54');
 filename = strcat(path, 'spec_ratio_acc0acc1_05_14_20_27_54.png');
 saveas(gcf, filename,'png');
 close(figure(3));
@@ -1539,7 +1572,7 @@ close(figure(3));
 
 \subsection{Original: $may14\_impspec\_analysis\_baihan.m$}\label{ss:impspc_ana.m}
 \begin{lstlisting}
-% impulse spectogram analysis.m for experiment may14 
+% impulse spectrogram analysis.m for experiment may14 
 % Baihan Lin, May 2017
 
 clear all; close all;
@@ -1547,7 +1580,7 @@ clear all; close all;
 load('may14.mat')
 
 path=('/Users/DoerLBH/Dropbox/git/UbiComp_OsteoApp_FEA/
-raspberry_pi/may14/impulse_spectogram/');
+raspberry_pi/may14/impulse_spectrogram/');
 system(['mkdir ' path]);
 
 %% -----acc0_05_14_20_27_54 acc1_05_14_20_27_54------
@@ -1598,7 +1631,7 @@ for tp = frame+1:size-2*frame
     if ~pulse0(tp) && (s_acc0_05_14_20_27_54(tp) > 100)
         spectrogram(s_acc0_05_14_20_27_54(tp-frame:tp+frame*2),
         wind,nlap,nfft,Fs,'yaxis');
-       title(strcat('Impulse spectogram 
+       title(strcat('Impulse spectrogram 
        acc0\_05\_14\_20\_27\_54','\_',int2str(tp)));
         filename = strcat(pathN, strcat('impspec_',
         'acc0_05_14_20_27_54','_',int2str(tp),'.png'));
@@ -1608,7 +1641,7 @@ for tp = frame+1:size-2*frame
     if ~pulse1(tp) && (s_acc1_05_14_20_27_54(tp) > 100)
         spectrogram(s_acc1_05_14_20_27_54(tp-frame:tp+frame*2)
         ,wind,nlap,nfft,Fs,'yaxis');
-        title(strcat('Impulse spectogram 
+        title(strcat('Impulse spectrogram 
         acc1\_05\_14\_20\_27\_54','\_',int2str(tp)));
         filename = strcat(pathN, strcat('impspec_',
         'acc1_05_14_20_27_54','_',int2str(tp),'.png'));
@@ -1651,7 +1684,97 @@ rm *.png
 cd ../
 \end{lstlisting}
 
-\subsection{Modified: $spectogram\_baihan.py$}\label{ss:specPy}
+\subsection{Original: $may30\_fft\_lsq\_delay.m$}\label{ss:delay}
+\begin{lstlisting}
+% time delay analysis with FFT and least Sq. may30
+% Baihan Lin, June 2017
+
+clear all; close all;
+
+path='/Users/DoerLBH/Dropbox/git/
+UbiComp_OsteoApp_FEA/audio_time_delay/may30/';
+pathG='/Users/DoerLBH/Dropbox/git/
+UbiComp_OsteoApp_FEA/audio_time_delay/';
+
+[y,fs] = audioread(strcat(path,'DR0000_0015.wav'));
+
+ch1 = y(:,1);
+ch2 = y(:,2);
+ch1_fft = real(fft(y(:,1)));
+ch2_fft = real(fft(y(:,2)));
+save(strcat(pathG,'data1'));
+
+dt = 1/fs;
+t = 0:dt:(length(y)*dt)-dt;
+
+%% plotting
+
+figure(1);
+
+subplot(2,2,1);
+plot(t,ch1);
+xlabel('Seconds');
+ylabel('Amplitude');
+title('ch1');
+
+subplot(2,2,2);
+plot(t,ch2);
+xlabel('Seconds');
+ylabel('Amplitude');
+title('ch2');
+
+subplot(2,2,3);
+plot(t,ch1_fft);
+xlabel('Seconds');
+ylabel('Amplitude');
+title('ch1-fft');
+
+subplot(2,2,4);
+plot(t,ch2_fft);
+xlabel('Seconds');
+ylabel('Amplitude');
+title('ch2-fft');
+
+%% fminsearch method
+
+c0 = 0;
+cr = fminsearch('eFlsq1', c0)
+
+%% iterative method (worked)
+
+range = 200;
+min = 10e+20;
+td_fft = 0;
+td = 0;
+
+for c = 0:range
+    err = 0.0;
+    for j = range : length(ch1)-range;
+        err = err + (ch1_fft(j+round(c)) - ch2_fft(j))^2;
+    end
+    err;
+    if err < min
+        min = err;
+        td_fft = c;
+    end  
+end
+td_fft
+
+for c = 0:range   
+    err = 0.0;
+    for j = range : length(ch1)-range;
+        err = err + (ch1(j+round(c)) - ch2(j))^2;
+    end
+    err;
+    if err < min
+        min = err;
+        td = c;
+    end
+end
+td
+\end{lstlisting}
+
+\subsection{Modified: $spectrogram\_baihan.py$}\label{ss:specPy}
 \begin{lstlisting}
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
@@ -1754,13 +1877,16 @@ spi0.open(0,0)
 
 def setup_spi(spi) :
     spi.mode = 3 # <-- make sure to set mode AFTER open
-    spi.max_speed_hz = 5000000 # 3.9MHz < 5MHz (highest value for adxl345), 3.9MHz is equivalent to clock divisor of 64
+    spi.max_speed_hz = 5000000 # 3.9MHz < 5MHz 
+    (highest value for adxl345), 3.9MHz is 
+    equivalent to clock divisor of 64
 
 setup_spi(spi1)
 setup_spi(spi0)
 
 # Read the Device ID (should be xE5)
-# xfer transfers varying control select, but xfer2 cs will be held active
+# xfer transfers varying control select, 
+but xfer2 cs will be held active
 id = spi1.xfer2([128,0])
 print 'Device ID (Should be 0xe5):\n'+str(hex(id[1])) + '\n'
 id = spi0.xfer2([128,0])
@@ -1786,18 +1912,21 @@ def initadxl345(spi):
     # Set data rate to 3200 hz (rate code 0x0f) and not low power
     spi.xfer2([44, 15]) # [0x2c, 0x0f]
 
-    # I didnt enable full range (sets number of bits) and set range to +/- 2g 
+    # I didnt enable full range (sets number of bits) 
+    and set range to +/- 2g 
     # also sets to 4-wire spi
     #spi.xfer2([49, 0]) # [0x31, 0x00]
     #spi.xfer2([49, 0]) # [0x31, 0x00]
     #spi.xfer2([49, 10]) # [0x31, 0x00]
-    spi.xfer2([49, 11]) # [0x31, 0b00001011] which means +-16g and full resolution
+    spi.xfer2([49, 11]) # [0x31, 0b00001011] 
+    which means +-16g and full resolution
     
 
     #should probably set all to zero:
     #FIFO_CTL
     spi.xfer2([56, 0]) # 0x38, 0x00
-    #ACT_INACT_CTL -- "If all axes are excluded, the function is disabled" d6, d5, d4
+    #ACT_INACT_CTL -- "If all axes are excluded, 
+    the function is disabled" d6, d5, d4
     spi.xfer2([39, 0]) # 0x27, 0x00
     #TAP_AXES
     spi.xfer2([42, 0]) # 0x2a, 0x00
@@ -1807,9 +1936,11 @@ def initadxl345(spi):
     spi.xfer2([31,0])
     spi.xfer2([32,0])
 
-    # set DATA_READY interrupt in INT_ENABLE, automatically set to active-high
+    # set DATA_READY interrupt in INT_ENABLE, 
+    automatically set to active-high
     spi.xfer2([46, 128]) # [0x2e, 0x80]
-    # set INT_MAP to enable interrupts on int1 by setting the 0x80 bit to 0
+    # set INT_MAP to enable interrupts on int1 
+    by setting the 0x80 bit to 0
     spi.xfer2([47, 0]) # [0x2f, 0x0]
 
     # Enable measurement
@@ -1820,7 +1951,8 @@ def readadxl345(spi):
     rx = spi.xfer2([242,0,0,0,0,0,0]) # 0xf2
     #print rx
 
-    out = [rx[1] | (rx[2] << 8),rx[3] | (rx[4] << 8),rx[5] | (rx[6] << 8)]
+    out = [rx[1] | (rx[2] << 8),rx[3] | 
+    (rx[4] << 8),rx[5] | (rx[6] << 8)]
     # Format x-axis
     if (out[0] & (1<<15)):
         out[0] = out[0] - (1<<16)
@@ -1853,7 +1985,8 @@ def read_save0(channel):
 
 #def read_save(spi, f_string):
 #    axia = readadxl345(spi)
-#    f_string = f_string + str(axia[0]).zfill(5) + "\t" + str(axia[1]).zfill(5) + "\t" + str(axia[2]).zfill(5) + "\n"
+#    f_string = f_string + str(axia[0]).
+zfill(5) + "\t" + str(axia[1]).zfill(5) + "\t" + str(axia[2]).zfill(5) + "\n"
 
 # Initialize the ADXL345 accelerometer
 initadxl345(spi1)
@@ -1912,7 +2045,7 @@ f1_csv.close()
 
 \section{Acknowledgments}
 
-Thank Prof. Shwetak Patel for the opportunity to join this exciting lab and work on this meaningful project. Thank Morelle Arian and Josh Fromm for the patient guidance and faith in me through the project. Thank UbiComp Lab members such as Joshua Lim and Edward Wang for helpful advice and support. Thank Xinxin Zhang, Hongtao Wu, Yuxin Fu, Che Yi and Ziwen Guo for helpful discussion in mechanical engineering, material science and electrical engineering. Thank University of Washington for the wonderful platforms and resources in electrical engineering, mechanical engineering and computer science. 
+Thank Prof. Shwetak Patel for the opportunity to join this exciting lab and work on this meaningful project. Thank Morelle Arian and Josh Fromm for the patient guidance and faith in me through the project. Thank UbiComp Lab members such as Joshua Lim and Edward Wang for helpful advice and support. Thank Xinxin Zhang, Hongtao Wu, Yuxin Fu, Che Yi and Ziwen Guo for helpful discussion in mechanical engineering, material science and electrical engineering. Thank University of Washington for the wonderful platforms and resources in electrical engineering, mechanical engineering and computer science. I wouldn't be able to surpass many difficult challenges without their consistent supports.
 
 \balance{}
 
@@ -1928,3 +2061,4 @@ Thank Prof. Shwetak Patel for the opportunity to join this exciting lab and work
 %%% mode: latex
 %%% TeX-master: t
 %%% End:
+
