@@ -50,7 +50,7 @@ title('ch2-fft');
 c0 = 0;
 cr = fminsearch('eFlsq1', c0)
 
-%% iterative method
+%% iterative method (worked)
 
 range = 200;
 min = 10e+20;
