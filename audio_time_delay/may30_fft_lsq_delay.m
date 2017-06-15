@@ -52,16 +52,33 @@ cr = fminsearch('eFlsq1', c0)
 
 %% iterative method
 
-min = 10000000;
+range = 200;
+min = 10e+20;
+td_fft = 0;
 td = 0;
 
-for c = 0:100
+for c = 0:range
     
     err = 0.0;
-    for j = 100 : length(ch1)-100;
+    for j = range : length(ch1)-range;
         err = err + (ch1_fft(j+round(c)) - ch2_fft(j))^2;
     end
-    err
+    err;
+    if err < min
+        min = err;
+        td_fft = c;
+    end
+    
+end
+td_fft
+
+for c = 0:range
+    
+    err = 0.0;
+    for j = range : length(ch1)-range;
+        err = err + (ch1(j+round(c)) - ch2(j))^2;
+    end
+    err;
     if err < min
         min = err;
         td = c;
