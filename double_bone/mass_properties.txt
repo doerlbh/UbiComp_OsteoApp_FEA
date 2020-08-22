@@ -1,0 +1,36 @@
+Mass properties of double_bone
+     Configuration: Default
+     Coordinate system: -- default --
+
+Density = 0.04 pounds per cubic inch
+
+Mass = 0.41 pounds
+
+Total weld mass = 0.00 pounds
+
+Volume = 11.48 cubic inches
+
+Surface area = 59.47 square inches
+
+Center of mass: ( inches )
+	X = 5.91
+	Y = -0.70
+	Z = 0.00
+
+Principal axes of inertia and principal moments of inertia: ( pounds * square inches )
+Taken at the center of mass.
+	 Ix = ( 1.00,  0.00,  0.00)   	Px = 0.17
+	 Iy = ( 0.00,  1.00,  0.00)   	Py = 4.80
+	 Iz = ( 0.00,  0.00,  1.00)   	Pz = 4.94
+
+Moments of inertia: ( pounds * square inches )
+Taken at the center of mass and aligned with the output coordinate system.
+	Lxx = 0.17	Lxy = 0.00	Lxz = 0.00
+	Lyx = 0.00	Lyy = 4.80	Lyz = 0.00
+	Lzx = 0.00	Lzy = 0.00	Lzz = 4.94
+
+Moments of inertia: ( pounds * square inches )
+Taken at the output coordinate system.
+	Ixx = 0.38	Ixy = -1.71	Ixz = 0.00
+	Iyx = -1.71	Iyy = 19.27	Iyz = 0.00
+	Izx = 0.00	Izy = 0.00	Izz = 19.61

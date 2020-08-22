@@ -1,0 +1,36 @@
+Mass properties of test
+     Configuration: Default
+     Coordinate system: -- default --
+
+Density = 0.00 grams per cubic millimeter
+
+Mass = 284.13 grams
+
+Total weld mass = 0.00 grams
+
+Volume = 284127.20 cubic millimeters
+
+Surface area = 42654.46  square millimeters
+
+Center of mass: ( millimeters )
+	X = 70.65
+	Y = -150.55
+	Z = -266.21
+
+Principal axes of inertia and principal moments of inertia: ( grams *  square millimeters )
+Taken at the center of mass.
+	 Ix = ( 0.06, -0.07,  1.00)   	Px = 80845.40
+	 Iy = ( 0.97,  0.26, -0.04)   	Py = 5867118.04
+	 Iz = (-0.25,  0.96,  0.08)   	Pz = 5884691.66
+
+Moments of inertia: ( grams *  square millimeters )
+Taken at the center of mass and aligned with the output coordinate system.
+	Lxx = 5847176.31	Lxy = -19864.39	Lxz = 348130.27
+	Lyx = -19864.39	Lyy = 5855717.10	Lyz = -400184.86
+	Lzx = 348130.27	Lzy = -400184.86	Lzz = 129761.70
+
+Moments of inertia: ( grams *  square millimeters )
+Taken at the output coordinate system.
+	Ixx = 32423141.31	Ixy = -3041891.78	Ixz = -4995482.91
+	Iyx = -3041891.78	Iyy = 27409612.39	Iyz = 10987425.45
+	Izx = -4995482.91	Izy = 10987425.45	Izz = 7987991.93
